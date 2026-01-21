@@ -23,7 +23,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.9'
+        python-version: '3.11.9'
 
     - name: Install dependencies
       run: |
@@ -53,6 +53,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and push Docker image
+      id: build-and-publish  # Added this line to enable output referencing
       uses: docker/build-push-action@v4
       with:
         context: .
